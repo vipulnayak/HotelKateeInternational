@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import images from '../constants/images';
@@ -9,6 +10,8 @@ const Home = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const navigate = useNavigate();
 
   return (
     <div className="bg-gray-900 text-white">
@@ -40,12 +43,26 @@ const Home = () => {
               image={images.swimming}
             />
           </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-8 sm:mt-10 md:mt-12 text-center"
+          >
+            <motion.button
+              onClick={() => navigate('/facilities')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition-all duration-300"
+            >
+              Explore More Facilities
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
       <Services />
-
 
       {/* Call to Action */}
       <motion.section
@@ -81,7 +98,15 @@ const Home = () => {
   );
 };
 
-const FeatureCard = ({ title, description, image }: { title: string; description: string; image: string }) => (
+const FeatureCard = ({ 
+  title, 
+  description, 
+  image
+}: { 
+  title: string; 
+  description: string; 
+  image: string; 
+}) => (
   <div className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
     <img src={image} alt={title} className="w-full h-40 sm:h-44 md:h-48 object-cover" />
     <div className="p-4 sm:p-5 md:p-6">
@@ -92,3 +117,4 @@ const FeatureCard = ({ title, description, image }: { title: string; description
 );
 
 export default Home;
+

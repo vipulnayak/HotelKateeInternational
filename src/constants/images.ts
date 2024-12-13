@@ -11,6 +11,7 @@ import dininghall from '../assets/dininghall.jpg';
 import hotel from '../assets/hotel.png';
 import logo from '../assets/Picture1.png';
 import banquet from '../assets/banquet.jpg';
+import sportsbar from '../assets/sportsbar.jpg';
 
 export default {
   background,
@@ -25,5 +26,6 @@ export default {
   dininghall,
   hotel,
   logo,
-  banquet
+  banquet,
+  sportsbar
 };

@@ -41,14 +41,14 @@ const Navbar = () => {
 
           {/* Book Now Button */}
           <motion.a
-            href="https://www.makemytrip.com/hotels/hotel_kateel_international-details-karkala.html"
+            href="https://www.google.com/search?q=hotel+kateel+international&oq=hote&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYPDIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQLhhA0gEIODY5MmowajGoAgiwAgE&sourceid=chrome&ie=UTF-8"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden md:block bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 px-6 py-2 rounded-full font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
           >
-            Book Now
+            Explore
           </motion.a>
 
           {/* Mobile Menu Button */}

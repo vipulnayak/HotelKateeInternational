@@ -75,6 +75,11 @@ const Facilities = () => {
             description="Elegant venue for weddings, conferences, and special occasions"
             image={images.banquet}
           />
+          <FacilityCard
+            title="Sports Bar"
+            description="Cocktail Bar and Sports Bar for a great experience"
+            image={images.sportsbar}
+          />
         </div>
       </div>
     </div>

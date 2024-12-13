@@ -1,7 +1,14 @@
-import { Facebook, Mail, Phone, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+  };
+
   return (
     <footer className="bg-gray-800 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
@@ -15,7 +22,9 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-white mb-4">Hotel Kateel International</h3>
             <p className="text-gray-400">Experience luxury and comfort in the heart of the city.</p>
             <div className="flex space-x-4 mt-4">
-              <SocialIcon Icon={Facebook} href="#" />
+              <SocialIcon Icon={Facebook} href="https://www.facebook.com/p/Hotel-Kateel-International-100046536266574/" />
+              <SocialIcon Icon={Instagram} href="https://www.instagram.com/hotelkateelinternational/" />
+              <SocialIcon Icon={Twitter} href="https://twitter.com/HotelKateel" />
             </div>
           </motion.div>
 
@@ -27,10 +36,10 @@ const Footer = () => {
           >
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <FooterLink href="/about">About Us</FooterLink>
-              <FooterLink href="/facilities">Facilities</FooterLink>
-              <FooterLink href="/contact">Contact</FooterLink>
-              <FooterLink href="#">Book Now</FooterLink>
+              <FooterLink onClick={() => handleNavigation('/about')}>About Us</FooterLink>
+              <FooterLink onClick={() => handleNavigation('/facilities')}>Facilities</FooterLink>
+              <FooterLink onClick={() => handleNavigation('/contact')}>Contact</FooterLink>
+              <FooterLink onClick={() => handleNavigation('/booking')}>Book Now</FooterLink>
             </ul>
           </motion.div>
 
@@ -43,42 +52,44 @@ const Footer = () => {
           >
             <h4 className="text-lg font-semibold text-white mb-4">Contact Us</h4>
             <div className="space-y-4">
-              <ContactInfo Icon={MapPin} text="Hotel Kateel International,Vendors Lane, Market Road Near Bus Stand, Karkala,574104,India" />
-              <ContactInfo Icon={Phone} text="+91 7022593107" />
+              <ContactInfo Icon={MapPin} text="Hotel Kateel International, Vendors Lane, Market Road Near Bus Stand, Karkala, 574104, India" />
+              <ContactInfo Icon={Phone} text="+91 7022593107, 7022593111" />
               <ContactInfo Icon={Mail} text="kateelinternational@gmail.com" />
             </div>
           </motion.div>
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="text-gray-400">© {new Date().getFullYear()} HotelKateelInternational. All rights reserved.</p>
+          <p className="text-gray-400">© {new Date().getFullYear()} Hotel Kateel International. All rights reserved.</p>
         </div>
       </div>
     </footer>
   );
 };
 
-const SocialIcon = ({ Icon, href }: { Icon: any; href: string }) => (
+const SocialIcon = ({ Icon, href }: { Icon: React.ElementType; href: string }) => (
   <a
-    href={"https://www.facebook.com/p/Hotel-Kateel-International-100046536266574/"}
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className="text-gray-400 hover:text-white transition-colors duration-300"
   >
     <Icon size={20} />
   </a>
 );
 
-const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+const FooterLink = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
   <li>
-    <a
-      href={href}
-      className="text-gray-400 hover:text-white transition-colors duration-300"
+    <button
+      onClick={onClick}
+      className="text-gray-400 hover:text-white transition-colors duration-300 bg-transparent border-none cursor-pointer"
     >
       {children}
-    </a>
+    </button>
   </li>
 );
 
-const ContactInfo = ({ Icon, text }: { Icon: any; text: string }) => (
+const ContactInfo = ({ Icon, text }: { Icon: React.ElementType; text: string }) => (
   <div className="flex items-center space-x-3">
     <Icon size={20} className="text-purple-500" />
     <span>{text}</span>
@@ -86,3 +97,4 @@ const ContactInfo = ({ Icon, text }: { Icon: any; text: string }) => (
 );
 
 export default Footer;
+
