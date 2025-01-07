@@ -48,7 +48,7 @@ const Navbar = () => {
             whileTap={{ scale: 0.95 }}
             className="hidden md:block bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 px-6 py-2 rounded-full font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
           >
-            Explore
+            Book Now
           </motion.a>
 
           {/* Mobile Menu Button */}

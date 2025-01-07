@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -23,8 +23,7 @@ const Footer = () => {
             <p className="text-gray-400">Experience luxury and comfort in the heart of the city.</p>
             <div className="flex space-x-4 mt-4">
               <SocialIcon Icon={Facebook} href="https://www.facebook.com/p/Hotel-Kateel-International-100046536266574/" />
-              <SocialIcon Icon={Instagram} href="https://www.instagram.com/hotelkateelinternational/" />
-              <SocialIcon Icon={Twitter} href="https://twitter.com/HotelKateel" />
+              <SocialIcon Icon={Instagram} href="https://www.instagram.com/hotel_kateel_international?" />
             </div>
           </motion.div>
 
@@ -39,7 +38,16 @@ const Footer = () => {
               <FooterLink onClick={() => handleNavigation('/about')}>About Us</FooterLink>
               <FooterLink onClick={() => handleNavigation('/facilities')}>Facilities</FooterLink>
               <FooterLink onClick={() => handleNavigation('/contact')}>Contact</FooterLink>
-              <FooterLink onClick={() => handleNavigation('/booking')}>Book Now</FooterLink>
+              <li>
+                <a
+                  href="https://www.makemytrip.com/hotels/hotel_kateel_international-details-karkala.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
+                >
+                  Book Now
+                </a>
+              </li>
             </ul>
           </motion.div>
 
@@ -91,8 +99,45 @@ const FooterLink = ({ onClick, children }: { onClick: () => void; children: Reac
 
 const ContactInfo = ({ Icon, text }: { Icon: React.ElementType; text: string }) => (
   <div className="flex items-center space-x-3">
-    <Icon size={20} className="text-purple-500" />
-    <span>{text}</span>
+    {Icon === MapPin ? (
+      <a
+        href="https://www.google.com/maps?gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDkyBggCEEUYOzIGCAMQRRg8MgYIBBBFGDwyBggFEEUYPDIGCAYQLhhA0gEIODI1MmowajGoAgiwAgE&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KakngmVDVrs7MTfX4hjKrqkb&daddr=Vendors+Lane,+Market+Rd,+near+Bus+Stand,+Karkala,+Karnataka+574104"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-purple-500 hover:text-purple-400 transition-colors duration-300"
+      >
+        <Icon size={20} />
+      </a>
+    ) : Icon === Phone ? (
+      <a
+        href="tel:+917022593107"
+        className="text-purple-500 hover:text-purple-400 transition-colors duration-300"
+      >
+        <Icon size={20} />
+      </a>
+    ) : Icon === Mail ? (
+      <a
+        href="mailto:kateelinternational@gmail.com"
+        className="text-purple-500 hover:text-purple-400 transition-colors duration-300"
+      >
+        <Icon size={20} />
+      </a>
+    ) : (
+      <Icon size={20} className="text-purple-500" />
+    )}
+    <span>
+      {Icon === Phone ? (
+        <a href="tel:+917022593107" className="text-gray-400 hover:text-white transition-colors duration-300">
+          {text}
+        </a>
+      ) : Icon === Mail ? (
+        <a href="mailto:kateelinternational@gmail.com" className="text-gray-400 hover:text-white transition-colors duration-300">
+          {text}
+        </a>
+      ) : (
+        text
+      )}
+    </span>
   </div>
 );
 
